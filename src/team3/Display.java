@@ -21,27 +21,17 @@ public class Display {
 
     }
 
-    static public void flash() {
 
-//        String line = "********************************";
-        String line = "                                ";
-        for (int i = 0; i < 50; i++) {
-            text(line, 0, 0);
-        }
-        text("", 0, 0.20);
-
-    }
-
-    static public void anouncement(String hero, String badDude) {
+    static public void anouncement(String hero, String VS, String badDude) {
 
         String star = "*";
-        String content = hero + " VS " + badDude + "\n";
+        String content = hero + VS + badDude + "\n";
         String line = new String(new char[content.length()]).replace("\0", star);
 
         text("", 1, 0);
         text("        " + line + "\n"
                 + "        " + content
-                + "        " + line + "\n", 2, 4);
+                + "        " + line + "\n", 2, 2);
 
     }
 
@@ -52,7 +42,28 @@ public class Display {
                 + "        ***    |  WAR GAMES  |     ***\n"
                 + "        ******************************";
 
-        text(title, 0, 2.5);
+        
+        text(title, 0, 1.5);
+ 
+        
+    }
+    
+    static public void instructions(){
+        
+                 
+String show = 
+"The objective of the game is to kill the monster\n" +
+"You play by attacking the monster with one of two modes:\n"+
+"If your power/magic is more than the moster,\n"+ 
+"You will cause more damage \n";
+
+text(show,1,5);
+
+
+text("Let the games begin.",1,3);
+        
+        
+        
     }
 
     static public void startOfGame() {
@@ -88,7 +99,7 @@ public class Display {
                 + "********************************\n", input.name, input.health, input.power, input.magic);
 
         text("********************************", 0, 0);
-        text("These are " + input.name + "'s battle specs", 0, 0);
+        text(input.lastAttackTitle, 0, 0);
         text(box, 0, 0);
         blankLines(lines);
         waitSeconds(seconds);

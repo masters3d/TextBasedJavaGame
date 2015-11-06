@@ -14,8 +14,9 @@ public class Character {
 // Health and Game Level
     protected int health = 100;
 
-//Character name 
+//Character name and titleAttack
     protected String name;
+    protected String lastAttackTitle = "The starting battle specs are:";
 
 //Character Abilities
     protected int power = 100;
@@ -23,7 +24,19 @@ public class Character {
 
     void attack(int power1ormagic2, Character enemy) {
 
+        String attackName = "";
+        
+        switch (power1ormagic2) {
+            case 1: attackName = "Power";
+                break;
+            case 2: attackName = "Magic";
+                break;
+ 
+        }
+        
         int basePoint = 5;
+        
+        int startHealthEnemy = enemy.health;
 
         if (power1ormagic2 == 1) {
 
@@ -52,6 +65,8 @@ public class Character {
             }
         }
 
+        lastAttackTitle =  attackName + " Attack : Damage " + Integer.toString(startHealthEnemy - enemy.health);
+        
     }
 
     public Character(String name) {

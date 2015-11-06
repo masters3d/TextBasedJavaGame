@@ -70,10 +70,11 @@ public class Game {
         Character badDude = game.createMonster();
 
 // Display the Character's starting specs
-        Display.anouncement(hero.name, badDude.name);
+        
+        Display.instructions();
+        Display.anouncement(hero.name," VS ", badDude.name);
 
         do {
-            Display.flash();
             Display.blankLines(1);
             Display.characterSpecs(hero, 0, 0);
             Display.characterSpecs(badDude, 1, 0);
@@ -110,11 +111,14 @@ public class Game {
 
     public void checkWin(Character badDude, Character hero) {
         if (badDude.health <= 0 && hero.health > 0) {
-            System.out.println(hero.name + " Wins!");
+            
+            Display.anouncement(hero.name," Wins", "!");
         } else if (hero.health <= 0 && badDude.health > 0) {
-            System.out.println(badDude.name + " Wins!");
+            Display.anouncement(badDude.name," Wins", "!");
         } else if (hero.health <= 0 && badDude.health <= 0) {
-            System.out.println(badDude.name + " and " + hero.name + " are both Dead!");
+            Display.anouncement(badDude.name," and " + hero.name , " are both Dead!");
         }
+        
+        System.out.println("Thanks for playing!");
     }
 }
