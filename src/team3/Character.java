@@ -22,9 +22,6 @@ public class Character {
     private int power = 100;
     private int magic = 100;
     
-    
-    
-    
 
     public void attack(int power1ormagic2, Character enemy) {
 

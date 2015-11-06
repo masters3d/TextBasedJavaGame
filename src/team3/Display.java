@@ -15,7 +15,7 @@ public class Display {
 
     static public void text(String input, int lines, double seconds) {
 
-        System.out.println(input);
+        System.out.print(input);
         blankLines(lines);
         waitSeconds(seconds);
 
@@ -27,7 +27,7 @@ public class Display {
         String content = hero + VS + badDude + "\n";
         String line = new String(new char[content.length() - 1]).replace("\0", star);
 
-        text("", lines, 0);
+        
         text("        " + line + "\n"
                 + "        " + content
                 + "        " + line, lines, seconds);
@@ -41,7 +41,7 @@ public class Display {
                 + "        ***    |  WAR GAMES  |     ***\n"
                 + "        ******************************";
 
-        text(title, 0, 1.5);
+        text(title, 1, 1.5);
 
     }
 
@@ -77,7 +77,7 @@ public class Display {
                 + "  *         *                   ##   $$            \n"
                 + "  **        **                ###    $$$           \n";
 
-        text(graphic, 0, 1);
+        text(graphic, 1, 1);
     }
 
     static public void characterSpecs(Character input, int lines, double seconds) {
@@ -89,15 +89,16 @@ public class Display {
                 + "**       Magic : %d                  \n"
                 + "********************************\n", input.getName(), input.getHealth(), input.getPower(), input.getMagic());
 
-        text("********************************", 0, 0);
-        text(input.getLastAttackTitle(), 0, 0);
-        text(box, 0, 0);
+        text("********************************", 1, 0);
+        text(input.getLastAttackTitle(), 1, 0);
+        text(box, 1, 0);
         blankLines(lines);
         waitSeconds(seconds);
 
     }
 
     static public void chooseFightMode() {
+        System.out.println();
         System.out.print("Choose 1 for Power Attack or 2 for Magic Attack\n");
         System.out.print("Enter number here: ");
     }
