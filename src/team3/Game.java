@@ -11,18 +11,35 @@ import java.util.Scanner;
  */
 public class Game {
 
+    /**
+     *
+     */
     static public Random random = new Random();
+
+    /**
+     *
+     */
     static public Scanner scanIn = new Scanner(System.in);
 
-    
+    /**
+     *
+     */
     public Game() {
     }
     
+    /**
+     *
+     * @return
+     */
     public String randomName() {
         String[] array = {"Janfeb", "Macapri", "Majune", "Julaug", "Sepoct", "Nodec"};
         return array[random.nextInt(6)];
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPlayerName() {
 
         String toReturn = " ";
@@ -34,6 +51,10 @@ public class Game {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public Character createMonster() {
         int power = random.nextInt(200);
         Character monster = new Character(randomName());
@@ -43,6 +64,10 @@ public class Game {
         return monster;
     }
 
+    /**
+     *
+     * @param seconds
+     */
     public static void waitSeconds(double seconds) {
 
         int miliSeconds = (int) (seconds * 1000);
@@ -55,10 +80,20 @@ public class Game {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public static int randomAttack() {
         return random.nextInt(2) + 1;
     }
 
+    /**
+     *
+     * @param hero
+     * @param attack
+     * @param badDude
+     */
     public void chooseAttackMode(Character hero, int attack, Character badDude) {
         int powerAttack = 1;
         int magicAttack = 2;
@@ -73,6 +108,12 @@ public class Game {
 
     }
 
+    /**
+     *
+     * @param badDude
+     * @param hero
+     * @return
+     */
     public boolean alive(Character badDude, Character hero) {
         if (badDude.getHealth() > 0 && hero.getHealth() > 0) {
             return true;
@@ -82,6 +123,11 @@ public class Game {
         }
     }
 
+    /**
+     *
+     * @param badDude
+     * @param hero
+     */
     public void checkWin(Character badDude, Character hero) {
 
         String whoWins = " ";

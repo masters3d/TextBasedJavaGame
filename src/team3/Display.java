@@ -13,6 +13,12 @@ import static team3.Game.waitSeconds;
  */
 public class Display {
 
+    /**
+     *
+     * @param input
+     * @param lines
+     * @param seconds
+     */
     static public void text(String input, int lines, double seconds) {
 
         System.out.print(input);
@@ -21,6 +27,14 @@ public class Display {
 
     }
 
+    /**
+     *
+     * @param hero
+     * @param VS
+     * @param badDude
+     * @param lines
+     * @param seconds
+     */
     static public void anouncement(String hero, String VS, String badDude, int lines, double seconds) {
 
         String star = "*";
@@ -34,6 +48,9 @@ public class Display {
 
     }
 
+    /**
+     *
+     */
     static public void showTitle() {
 
         String title
@@ -45,12 +62,15 @@ public class Display {
 
     }
 
+    /**
+     *
+     */
     static public void instructions() {
 
         String show
                 = "The objective of the game is to kill the monster\n"
                 + "You play by attacking the monster with one of two modes:\n"
-                + "If your power/magic is more than the moster,\n"
+                + "If your power/magic is more than the monster,\n"
                 + "You will cause more damage \n";
 
         text(show, 0, 0);
@@ -58,6 +78,9 @@ public class Display {
 
     }
 
+    /**
+     *
+     */
     static public void startOfGame() {
 
         String graphic
@@ -80,6 +103,12 @@ public class Display {
         text(graphic, 1, 1);
     }
 
+    /**
+     *
+     * @param input
+     * @param lines
+     * @param seconds
+     */
     static public void characterSpecs(Character input, int lines, double seconds) {
 
         String box = String.format("********************************\n"
@@ -97,12 +126,19 @@ public class Display {
 
     }
 
+    /**
+     *
+     */
     static public void chooseFightMode() {
         System.out.println();
         System.out.print("Choose 1 for Power Attack or 2 for Magic Attack\n");
         System.out.print("Enter number here: ");
     }
 
+    /**
+     *
+     * @param number
+     */
     static public void blankLines(int number) {
 
         for (int i = 0; i < number; i++) {

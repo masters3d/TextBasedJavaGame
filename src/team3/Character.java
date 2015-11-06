@@ -22,7 +22,11 @@ public class Character {
     private int power = 100;
     private int magic = 100;
     
-
+    /**
+     *
+     * @param power1ormagic2
+     * @param enemy
+     */
     public void attack(int power1ormagic2, Character enemy) {
 
         String attackName = "";
@@ -72,47 +76,91 @@ public class Character {
 
     }
 
+    /**
+     *
+     * @param name
+     */
     public Character(String name) {
         this.name = name;
 
     }
 
+    /**
+     *
+     * @return
+     */
     public int getHealth() {
         return health;
     }
 
+    /**
+     *
+     * @param health
+     */
     public void setHealth(int health) {
         this.health = health;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLastAttackTitle() {
         return lastAttackTitle;
     }
 
+    /**
+     *
+     * @param lastAttackTitle
+     */
     public void setLastAttackTitle(String lastAttackTitle) {
         this.lastAttackTitle = lastAttackTitle;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPower() {
         return power;
     }
 
+    /**
+     *
+     * @param power
+     */
     public void setPower(int power) {
         this.power = power;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMagic() {
         return magic;
     }
 
+    /**
+     *
+     * @param magic
+     */
     public void setMagic(int magic) {
         this.magic = magic;
     }
