@@ -14,17 +14,12 @@ public class Character {
 // Health and Game Level
 protected int health = 100;
 
-//Character name and gender
+//Character name 
 protected String name;
-protected String gender;
 
 //Character Abilities
 protected int power = 100;
 protected int magic = 100;
-
-//Character Experience Points
-protected int experience = 0;
-
 
 
 void attack(int power1ormagic2 , Character enemy ){
@@ -44,8 +39,7 @@ void attack(int power1ormagic2 , Character enemy ){
     else {
         power = 0;
     }
-    experience += 2*basePoint;
-    
+        
     } else {
     
     if (magic > enemy.magic){
@@ -59,16 +53,14 @@ void attack(int power1ormagic2 , Character enemy ){
     else{
         magic = 0;
     }
-    experience += 2*basePoint;
-        
     }
 
     
 }
 
-    public Character(String name, String gender) {
+    public Character(String name) {
         this.name = name;
-        this.gender = gender;
+       
     }
     
    
