@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- *
- * @author cheyo
+ * @author JOHN W SLIWA
+ * @author JOSE E JIMENEZ
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({team3.DisplayTest.class, team3.GameTest.class, team3.CharacterTest.class})

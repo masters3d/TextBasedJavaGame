@@ -35,7 +35,7 @@ public class Display {
      * @param lines
      * @param seconds
      */
-    static public void anouncement(String hero, String VS, String badDude, int lines, double seconds) {
+    static public void announcement(String hero, String VS, String badDude, int lines, double seconds) {
 
         String star = "*";
         String content = hero + VS + badDude + "\n";

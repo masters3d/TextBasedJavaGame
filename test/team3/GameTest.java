@@ -9,8 +9,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author cheyo
+ * @author JOHN W SLIWA
+ * @author JOSE E JIMENEZ
  */
 public class GameTest {
     

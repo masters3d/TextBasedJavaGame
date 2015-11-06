@@ -9,8 +9,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author cheyo
+ * @author JOHN W SLIWA
+ * @author JOSE E JIMENEZ
  */
 public class DisplayTest {
     
@@ -25,10 +25,10 @@ public class DisplayTest {
     }
 
     /**
-     * Test of anouncement method, of class Display.
+     * Test of announcement method, of class Display.
      */
     @Test
-    public void testAnouncement() {
+    public void testAnnouncement() {
     }
 
     /**

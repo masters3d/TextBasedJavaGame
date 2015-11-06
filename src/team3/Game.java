@@ -149,7 +149,7 @@ public class Game {
         Display.blankLines(1);
         Display.characterSpecs(hero, 0, 0);
         Display.characterSpecs(badDude, 0, 0);
-        Display.anouncement("| ", whoWins, " |", 1, 5);
+        Display.announcement("| ", whoWins, " |", 1, 5);
         
     }
 
@@ -175,7 +175,7 @@ public class Game {
         Display.instructions();
         scanIn.nextLine();
         Display.text("Let the games begin.", 2, 1);
-        Display.anouncement(hero.getName(), " VS ", badDude.getName(), 2, 2);
+        Display.announcement(hero.getName(), " VS ", badDude.getName(), 2, 2);
 
         int attackMode = -1;
         do {
