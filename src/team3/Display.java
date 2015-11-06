@@ -21,13 +21,22 @@ static public void text(String input, int lines, double seconds){
     
 }    
 
+static public void anouncement(String hero, String badDude){
+    
+    String star = "*";
+    String content = hero + " VS " + badDude + "\n";
+    String line = new String(new char[content.length()]).replace("\0", star);
+
+    text("",1,0);
+    text(line +"\n" + content + line +"\n" , 2, 4);
+            
+}
+
 static public void showTitle(){
 
     String title =
 "        ******************************\n" +
-"        ***    ┌────────┐    ***\n" +
-"        ***    │  WAR GAMES  │    ***\n" +
-"        ***    └────────┘    ***\n" +
+"        ***    |  WAR GAMES  |     ***\n" +
 "        ******************************";
 
 text(title, 0 ,2.5);    
@@ -51,17 +60,6 @@ static public void startOfGame(){
 "  *         *                   ##   $$            \n" +
 "  **        **                ###    $$$           \n" ;
 
- String game = 
-         
-"**********************************************************\n" +
-"**********************************************************\n" +
-"***    ┌───────────────── ──────┐       ***\n" +
-"***    │                                       │       ***\n" +
-"***    │               WAR GAMES               │       ***\n" +
-"***    │                                       │       ***\n" +
-"***    └───────────────────────┘       ***\n" +
-"**********************************************************\n" +
-"**********************************************************";
     
 text(graphic, 0, 2.5);  
 }
