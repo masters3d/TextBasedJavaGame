@@ -25,9 +25,9 @@ static public void showTitle(){
 
     String title =
 "        ******************************\n" +
-"        ***    ┌──────────────┐    ***\n" +
-"        ***    │  WAR GAMES   │    ***\n" +
-"        ***    └──────────────┘    ***\n" +
+"        ***    ┌────────┐    ***\n" +
+"        ***    │  WAR GAMES  │    ***\n" +
+"        ***    └────────┘    ***\n" +
 "        ******************************";
 
 text(title, 0 ,2.5);    
@@ -55,11 +55,11 @@ static public void startOfGame(){
          
 "**********************************************************\n" +
 "**********************************************************\n" +
-"***    ┌───────────────────────────────────────┐       ***\n" +
+"***    ┌───────────────── ──────┐       ***\n" +
 "***    │                                       │       ***\n" +
 "***    │               WAR GAMES               │       ***\n" +
 "***    │                                       │       ***\n" +
-"***    └───────────────────────────────────────┘       ***\n" +
+"***    └───────────────────────┘       ***\n" +
 "**********************************************************\n" +
 "**********************************************************";
     
@@ -67,7 +67,7 @@ text(graphic, 0, 2.5);
 }
 
 
-static public void characterSpecs(Character input){
+static public void characterSpecs(Character input, int lines, double seconds){
        
   String box =  String.format(
 "********************************\n" +
@@ -80,15 +80,15 @@ static public void characterSpecs(Character input){
   text("********************************" ,0 ,0);
   text("These are " + input.name + "'s battle specs",0 ,0);
   text(box, 0, 0);
-  blankLines(1);
-  waitSeconds(5);
+  blankLines(lines);
+  waitSeconds(seconds);
 
   
   
 }
 
 static public void chooseFightMode(){
-       text("Choose 1 or 2", 0, 0);
+       text("Choose 1 for Power Attack or 2 for Magic Attack", 0, 0);
     }
     
 static public void blankLines(int number){
@@ -98,4 +98,5 @@ static public void blankLines(int number){
     }
         
 }
+
 }
