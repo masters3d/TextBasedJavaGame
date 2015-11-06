@@ -1,5 +1,6 @@
 package team3;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,8 +20,14 @@ public class Game {
     }
 
     public String getPlayerName() {
-        Display.text("Please type a name for your Character:", 0, 0);
-        return scanIn.next();
+
+        String toReturn = " ";
+        System.out.print("Please name your Character:\n");
+        System.out.print("Enter text here: ");
+        toReturn = scanIn.next();
+        scanIn.nextLine();
+        return toReturn;
+
     }
 
     public Character createMonster() {
@@ -70,16 +77,25 @@ public class Game {
         Character badDude = game.createMonster();
 
 // Display the Character's starting specs
-        
         Display.instructions();
-        Display.anouncement(hero.name," VS ", badDude.name);
+        scanIn.nextLine();
+        Display.text("Let the games begin.", 1, 1);
+        Display.anouncement(hero.name, " VS ", badDude.name);
 
+        int attackMode = 2;
         do {
             Display.blankLines(1);
             Display.characterSpecs(hero, 0, 0);
             Display.characterSpecs(badDude, 1, 0);
             Display.chooseFightMode();
-            game.chooseAttackMode(hero, scanIn.nextInt(), badDude);
+
+            try {
+                attackMode = scanIn.nextInt();
+                game.chooseAttackMode(hero, attackMode, badDude);
+            } catch (InputMismatchException ime) {
+                attackMode = -1;
+                scanIn.nextLine();
+            }
 
         } while (game.alive(badDude, hero));
     }
@@ -102,23 +118,34 @@ public class Game {
         if (badDude.health > 0 && hero.health > 0) {
             return true;
         } else {
-            Display.characterSpecs(hero, 0, 0);
-            Display.characterSpecs(badDude, 1, 0);
             checkWin(badDude, hero);
             return false;
         }
     }
 
     public void checkWin(Character badDude, Character hero) {
-        if (badDude.health <= 0 && hero.health > 0) {
-            
-            Display.anouncement(hero.name," Wins", "!");
-        } else if (hero.health <= 0 && badDude.health > 0) {
-            Display.anouncement(badDude.name," Wins", "!");
-        } else if (hero.health <= 0 && badDude.health <= 0) {
-            Display.anouncement(badDude.name," and " + hero.name , " are both Dead!");
-        }
         
+        String whoWins = " ";
+        
+        if (badDude.health <= 0 && hero.health > 0) {
+            whoWins = hero.name + " Wins!";
+            badDude.health = 0;
+            
+        } else if (hero.health <= 0 && badDude.health > 0) {
+            whoWins = badDude.name + " Wins!";
+            hero.health = 0;
+            Display.characterSpecs(hero, 0, 0);
+            Display.characterSpecs(badDude, 1, 0);
+        } else if (hero.health <= 0 && badDude.health <= 0) {
+            whoWins = badDude.name + " and " + hero.name + " are both Dead!";
+            hero.health = 0;
+            badDude.health = 0;
+           
+        }
+
+        Display.characterSpecs(hero, 0, 0);
+        Display.characterSpecs(badDude, 1, 0);
+        Display.anouncement("| ",whoWins," |");
         System.out.println("Thanks for playing!");
     }
 }

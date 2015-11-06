@@ -26,7 +26,7 @@ public class Display {
 
         String star = "*";
         String content = hero + VS + badDude + "\n";
-        String line = new String(new char[content.length()]).replace("\0", star);
+        String line = new String(new char[content.length() - 1]).replace("\0", star);
 
         text("", 1, 0);
         text("        " + line + "\n"
@@ -57,10 +57,9 @@ String show =
 "If your power/magic is more than the moster,\n"+ 
 "You will cause more damage \n";
 
-text(show,1,5);
+text(show,0,0);
+System.out.print("\n({Enter] to continue...");
 
-
-text("Let the games begin.",1,3);
         
         
         
@@ -107,7 +106,8 @@ text("Let the games begin.",1,3);
     }
 
     static public void chooseFightMode() {
-        text("Choose 1 for Power Attack or 2 for Magic Attack", 0, 0);
+        System.out.print("Choose 1 for Power Attack or 2 for Magic Attack\n");
+        System.out.print("Enter number here: ");
     }
 
     static public void blankLines(int number) {
