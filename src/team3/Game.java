@@ -73,6 +73,7 @@ public class Game {
         Display.anouncement(hero.name, badDude.name);
 
         do {
+            Display.flash();
             Display.blankLines(1);
             Display.characterSpecs(hero, 0, 0);
             Display.characterSpecs(badDude, 1, 0);
@@ -86,14 +87,13 @@ public class Game {
         int powerAttack = 1;
         int magicAttack = 2;
 
-        
         if (attack == 1) {
             hero.attack(powerAttack, badDude);
             badDude.attack(randomAttack(), hero);
         } else {
             hero.attack(magicAttack, badDude);
             badDude.attack(randomAttack(), hero);
-        } 
+        }
 
     }
 
