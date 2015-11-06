@@ -10,23 +10,23 @@ import java.util.Scanner;
  */
 public class Game {
     
-Random random = new Random();
-Scanner scanIn = new Scanner( System.in );
+static public  Random random = new Random();
+static public Scanner scanIn = new Scanner( System.in );
 
 
-String randomName(){
+public String randomName(){
     String[] array = {"Janfeb","Macapri", "Majune", "Julaug", "Sepoct", "Nodec"};
     return array[random.nextInt(6)];
 }
 
-String getPlayerName(){
-    Display.text("Please type a name for your Character:");
+public String getPlayerName(){
+    Display.text("Please type a name for your Character:", 0 , 0);
     return scanIn.next();    
 }
 
 
-String getPlayerGender(){
-    Display.text("Please type a gender for your Character:");
+public String getPlayerGender(){
+    Display.text("Please type a gender for your Character:", 0 , 0);
     return scanIn.next();    
 }
 
@@ -41,7 +41,7 @@ public Character createMonster(){
 }
 
 
-void waitSeconds(double seconds){
+public static void waitSeconds(double seconds){
 
  int miliSeconds = (int) (seconds * 1000);
  
@@ -57,7 +57,7 @@ void waitSeconds(double seconds){
 }
 
 
-int randomAttack() {    
+public static int randomAttack() {    
     return random.nextInt(2) + 1;
 }
 
@@ -77,9 +77,7 @@ int magicAttack = 2;
 Game game = new Game();
 
 Display.showTitle();
-game.waitSeconds(2.5);
 Display.startOfGame();
-game.waitSeconds(2.5);
 
 //Get Player Info
 String name = game.getPlayerName();
@@ -92,16 +90,11 @@ Character hero = new Character(name,gender);
 Character badDude = game.createMonster();
 
 // Display the Character's starting specs
-Display.blankLines(2);
-game.waitSeconds(2);
+Display.text("", 2, 2);
 Display.characterSpecs(hero);
-game.waitSeconds(5);
-Display.blankLines(1);
-Display.text("This will be your opponent: ");
-Display.blankLines(2);
-game.waitSeconds(3);
+Display.text("This will be your opponent: ", 2, 3);
 Display.characterSpecs(badDude);
-game.waitSeconds(5);
+
 
 System.out.print("HERO: " + hero.name + " vs "+ "MONSTER: " + badDude.name + "\n");
 System.out.print(hero.name + " power: " + Integer.toString(hero.power) + "  magic: " + Integer.toString(hero.magic)+ "\n");
@@ -114,13 +107,13 @@ do{
  Display.chooseFightMode();
     
         
-if (game.scanIn.nextInt() == 1){
+if (scanIn.nextInt() == 1){
  
 hero.attack(powerAttack , badDude);
 Display.blankLines(1);
 System.out.print("HERO STACKS \n");
 
-game.waitSeconds(1);
+waitSeconds(1);
 
 
 System.out.print(hero.name + " power: " + Integer.toString(hero.power) + "  magic: " + Integer.toString(hero.magic)+ "\n");
@@ -131,9 +124,9 @@ System.out.println();
 System.out.print("MONSTER STACKS  \n");
 
 
-game.waitSeconds(1);
+waitSeconds(1);
 
-badDude.attack(game.randomAttack(), hero);
+badDude.attack(randomAttack(), hero);
 System.out.print(badDude.name + " power: " + Integer.toString(badDude.power) + "  magic: " + Integer.toString(badDude.magic)+ "\n");
 System.out.print(badDude.name + " Health: " + Integer.toString(badDude.health) + " Magic: " +Integer.toString(badDude.magic)+"\n");
 
@@ -161,7 +154,7 @@ hero.attack(magicAttack , badDude);
 System.out.println();
 System.out.print("HERO STACKS \n");
 
-game.waitSeconds(1);
+waitSeconds(1);
 
 System.out.print(hero.name + " power: " + Integer.toString(hero.power) + "  magic: " + Integer.toString(hero.magic)+ "\n");
 System.out.print(hero.name + " Health: " + Integer.toString(hero.health) + "\n");
@@ -170,9 +163,9 @@ System.out.print(hero.name + " Health: " + Integer.toString(hero.health) + "\n")
 System.out.println();
 System.out.print("MONSTER STACKS  \n");
 
-game.waitSeconds(1);
+waitSeconds(1);
 
-badDude.attack(game.randomAttack(), hero);
+badDude.attack(randomAttack(), hero);
 System.out.print(badDude.name + " power: " + Integer.toString(badDude.power) + "  magic: " + Integer.toString(badDude.magic)+ "\n");
 System.out.print(badDude.name + " Health: " + Integer.toString(badDude.health) + " Magic: " +Integer.toString(badDude.magic)+"\n");
 

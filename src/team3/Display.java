@@ -5,15 +5,20 @@
  */
 package team3;
 
+import static team3.Game.waitSeconds;
+
 /**
  * @author JOHN W SLIWA
  * @author JOSE E JIMENEZ
  */
 public class Display {
     
-static public void text(String input){
+static public void text(String input, int lines, double seconds){
     
     System.out.println(input);
+    blankLines(lines);
+    waitSeconds(seconds);
+    
 }    
 
 static public void showTitle(){
@@ -25,8 +30,7 @@ static public void showTitle(){
 "        ***    └──────────────┘    ***\n" +
 "        ******************************";
 
-text(title);    
-    
+text(title, 0 ,2.5);    
 }
 static public void startOfGame(){
 
@@ -59,8 +63,7 @@ static public void startOfGame(){
 "**********************************************************\n" +
 "**********************************************************";
     
-text(graphic);  
- 
+text(graphic, 0, 2.5);  
 }
 
 
@@ -74,17 +77,18 @@ static public void characterSpecs(Character input){
 "**       Magic : %d                  \n" + 
 "********************************\n", input.name,input.health, input.power,input.magic);
   
-  text("********************************" );
-  text("These are " + input.name + "'s battle specs");
-  text(box);
-  
-  
+  text("********************************" ,0 ,0);
+  text("These are " + input.name + "'s battle specs",0 ,0);
+  text(box, 0, 0);
+  blankLines(1);
+  waitSeconds(5);
+
   
   
 }
 
 static public void chooseFightMode(){
-       text("Choose 1 or 2");
+       text("Choose 1 or 2", 0, 0);
     }
     
 static public void blankLines(int number){
