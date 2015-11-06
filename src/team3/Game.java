@@ -92,7 +92,6 @@ public class Game {
             badDude.attack(randomAttack(), hero);
         } else {
             hero.attack(magicAttack, badDude);
-            waitSeconds(1);
             badDude.attack(randomAttack(), hero);
         } 
 
@@ -115,7 +114,7 @@ public class Game {
         } else if (hero.health <= 0 && badDude.health > 0) {
             System.out.println(badDude.name + " Wins!");
         } else if (hero.health <= 0 && badDude.health <= 0) {
-            System.out.println(badDude.name + " " + " " + hero.name + " are both Dead!");
+            System.out.println(badDude.name + " and " + hero.name + " are both Dead!");
         }
     }
 }

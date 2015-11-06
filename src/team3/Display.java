@@ -61,7 +61,7 @@ static public void startOfGame(){
 "  **        **                ###    $$$           \n" ;
 
     
-text(graphic, 0, 2.5);  
+text(graphic, 0, 1);  
 }
 
 
