@@ -24,16 +24,9 @@ public String getPlayerName(){
     return scanIn.next();    
 }
 
-
-public String getPlayerGender(){
-    Display.text("Please type a gender for your Character:", 0 , 0);
-    return scanIn.next();    
-}
-
-
 public Character createMonster(){  
   int power = random.nextInt(200);
-  Character monster  = new Character(randomName(),"male");
+  Character monster  = new Character(randomName());
   monster.power = power;
   monster.magic = 200 - power;
 
@@ -82,111 +75,64 @@ Display.startOfGame();
 //Get Player Info
 String name = game.getPlayerName();
 Display.blankLines(1);
-String gender = game.getPlayerGender();
-Display.blankLines(1);
 
 // Create Characters
-Character hero = new Character(name,gender);
+Character hero = new Character(name);
 Character badDude = game.createMonster();
 
 // Display the Character's starting specs
 Display.text("", 2, 2);
-Display.characterSpecs(hero);
+Display.characterSpecs(hero,1,3);
 Display.text("This will be your opponent: ", 2, 3);
-Display.characterSpecs(badDude);
-
+Display.characterSpecs(badDude,1,1);
 
 System.out.print("HERO: " + hero.name + " vs "+ "MONSTER: " + badDude.name + "\n");
-System.out.print(hero.name + " power: " + Integer.toString(hero.power) + "  magic: " + Integer.toString(hero.magic)+ "\n");
-System.out.print(badDude.name + " power: " + Integer.toString(badDude.power) + "  magic: " + Integer.toString(badDude.magic)+ "\n");
-
-
-
 
 do{
- Display.chooseFightMode();
-    
-        
-if (scanIn.nextInt() == 1){
- 
-hero.attack(powerAttack , badDude);
 Display.blankLines(1);
-System.out.print("HERO STACKS \n");
+Display.characterSpecs(hero,0,0);  
+Display.characterSpecs(badDude,1,0);
+Display.chooseFightMode();
 
-waitSeconds(1);
-
-
-System.out.print(hero.name + " power: " + Integer.toString(hero.power) + "  magic: " + Integer.toString(hero.magic)+ "\n");
-System.out.print(hero.name + " Health: " + Integer.toString(hero.health) + "\n");
-
-
-System.out.println();
-System.out.print("MONSTER STACKS  \n");
-
-
-waitSeconds(1);
-
+if (scanIn.nextInt() == 1){ 
+hero.attack(powerAttack , badDude);
 badDude.attack(randomAttack(), hero);
-System.out.print(badDude.name + " power: " + Integer.toString(badDude.power) + "  magic: " + Integer.toString(badDude.magic)+ "\n");
-System.out.print(badDude.name + " Health: " + Integer.toString(badDude.health) + " Magic: " +Integer.toString(badDude.magic)+"\n");
-
-System.out.println();
-System.out.print(hero.name + " power: " + Integer.toString(hero.power) + "  magic: " + Integer.toString(hero.magic)+ "\n");
-System.out.print(hero.name + " Health: " + Integer.toString(hero.health) + " Magic: " +Integer.toString(hero.magic)+"\n");
-
-if (badDude.health <= 0 && hero.health > 0){
-    System.out.print(hero.name + " Wins!");
-}
-else if (hero.health <= 0 && badDude.health > 0){
-    System.out.print(badDude.name + " Wins!");
-}
-else if (hero.health <= 0 && badDude.health <= 0){
-    System.out.print(badDude.name + " " + " " + hero.name + " are both Dead!");
-}
-
 } 
 
-
-
-else{
- 
+else{ 
 hero.attack(magicAttack , badDude);
-System.out.println();
-System.out.print("HERO STACKS \n");
-
 waitSeconds(1);
-
-System.out.print(hero.name + " power: " + Integer.toString(hero.power) + "  magic: " + Integer.toString(hero.magic)+ "\n");
-System.out.print(hero.name + " Health: " + Integer.toString(hero.health) + "\n");
-
-
-System.out.println();
-System.out.print("MONSTER STACKS  \n");
-
-waitSeconds(1);
-
 badDude.attack(randomAttack(), hero);
-System.out.print(badDude.name + " power: " + Integer.toString(badDude.power) + "  magic: " + Integer.toString(badDude.magic)+ "\n");
-System.out.print(badDude.name + " Health: " + Integer.toString(badDude.health) + " Magic: " +Integer.toString(badDude.magic)+"\n");
+}
+}
+while(game.alive(badDude,hero));
+}
 
-System.out.println();
-System.out.print(hero.name + " power: " + Integer.toString(hero.power) + "  magic: " + Integer.toString(hero.magic)+ "\n");
-System.out.print(hero.name + " Health: " + Integer.toString(hero.health) + " Magic: " +Integer.toString(hero.magic)+"\n");
 
+
+boolean alive(Character badDude, Character hero){
+  if(  badDude.health > 0 && hero.health > 0){
+      return true;
+  }
+  else{
+      Display.characterSpecs(hero,0,0);  
+      Display.characterSpecs(badDude,1,0);
+      checkWin(badDude,hero);
+      return false;
+  }
+}
+
+void checkWin(Character badDude, Character hero)
+{
 if (badDude.health <= 0 && hero.health > 0){
-    System.out.print(hero.name + " Wins!");
+    System.out.println(hero.name + " Wins!");
 }
 else if (hero.health <= 0 && badDude.health > 0){
-    System.out.print(badDude.name + " Wins!");
+    System.out.println(badDude.name + " Wins!");
 }
 else if (hero.health <= 0 && badDude.health <= 0){
-    System.out.print(badDude.name + " " + " " + hero.name + " are both Dead!");
+    System.out.println(badDude.name + " " + " " + hero.name + " are both Dead!");
 }
-
-}
-}
-while(badDude.health > 0 && hero.health > 0);
-
 }
 }
     
