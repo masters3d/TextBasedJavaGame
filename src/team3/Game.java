@@ -33,8 +33,8 @@ public class Game {
     public Character createMonster() {
         int power = random.nextInt(200);
         Character monster = new Character(randomName());
-        monster.power = power;
-        monster.magic = 200 - power;
+        monster.setPower(power);
+        monster.setMagic(200 - power);
 
         return monster;
     }
@@ -80,7 +80,7 @@ public class Game {
         Display.instructions();
         scanIn.nextLine();
         Display.text("Let the games begin.", 1, 1);
-        Display.anouncement(hero.name, " VS ", badDude.name);
+        Display.anouncement(hero.getName(), " VS ", badDude.getName(), 2, 2);
 
         int attackMode = 2;
         do {
@@ -115,7 +115,7 @@ public class Game {
     }
 
     public boolean alive(Character badDude, Character hero) {
-        if (badDude.health > 0 && hero.health > 0) {
+        if (badDude.getHealth() > 0 && hero.getHealth() > 0) {
             return true;
         } else {
             checkWin(badDude, hero);
@@ -124,28 +124,28 @@ public class Game {
     }
 
     public void checkWin(Character badDude, Character hero) {
-        
+
         String whoWins = " ";
-        
-        if (badDude.health <= 0 && hero.health > 0) {
-            whoWins = hero.name + " Wins!";
-            badDude.health = 0;
-            
-        } else if (hero.health <= 0 && badDude.health > 0) {
-            whoWins = badDude.name + " Wins!";
-            hero.health = 0;
+
+        if (badDude.getHealth() <= 0 && hero.getHealth() > 0) {
+            whoWins = hero.getName() + " Wins!";
+            badDude.setHealth(0);
+
+        } else if (hero.getHealth() <= 0 && badDude.getHealth() > 0) {
+            whoWins = badDude.getName() + " Wins!";
+            hero.setHealth(0);
             Display.characterSpecs(hero, 0, 0);
             Display.characterSpecs(badDude, 1, 0);
-        } else if (hero.health <= 0 && badDude.health <= 0) {
-            whoWins = badDude.name + " and " + hero.name + " are both Dead!";
-            hero.health = 0;
-            badDude.health = 0;
-           
+        } else if (hero.getHealth() <= 0 && badDude.getHealth() <= 0) {
+            whoWins = badDude.getName() + " and " + hero.getName() + " are both Dead!";
+            hero.setHealth(0);
+            badDude.setHealth(0);
+
         }
 
         Display.characterSpecs(hero, 0, 0);
         Display.characterSpecs(badDude, 1, 0);
-        Display.anouncement("| ",whoWins," |");
+        Display.anouncement("| ", whoWins, " |", 0, 5);
         System.out.println("Thanks for playing!");
     }
 }

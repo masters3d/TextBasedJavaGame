@@ -12,30 +12,36 @@ package team3;
 public class Character {
 
 // Health and Game Level
-    protected int health = 100;
+    private int health = 100;
 
 //Character name and titleAttack
-    protected String name;
-    protected String lastAttackTitle = "The starting battle specs are:";
+    private String name;
+    private String lastAttackTitle = "The starting battle specs are:";
 
 //Character Abilities
-    protected int power = 100;
-    protected int magic = 100;
+    private int power = 100;
+    private int magic = 100;
+    
+    
+    
+    
 
-    void attack(int power1ormagic2, Character enemy) {
+    public void attack(int power1ormagic2, Character enemy) {
 
         String attackName = "";
-        
+
         switch (power1ormagic2) {
-            case 1: attackName = "Power";
+            case 1:
+                attackName = "Power";
                 break;
-            case 2: attackName = "Magic";
+            case 2:
+                attackName = "Magic";
                 break;
- 
+
         }
-        
+
         int basePoint = 5;
-        
+
         int startHealthEnemy = enemy.health;
 
         if (power1ormagic2 == 1) {
@@ -65,13 +71,53 @@ public class Character {
             }
         }
 
-        lastAttackTitle =  attackName + " Attack : Damage " + Integer.toString(startHealthEnemy - enemy.health);
-        
+        lastAttackTitle = attackName + " Attack : Damage " + Integer.toString(startHealthEnemy - enemy.health);
+
     }
 
     public Character(String name) {
         this.name = name;
 
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastAttackTitle() {
+        return lastAttackTitle;
+    }
+
+    public void setLastAttackTitle(String lastAttackTitle) {
+        this.lastAttackTitle = lastAttackTitle;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public int getMagic() {
+        return magic;
+    }
+
+    public void setMagic(int magic) {
+        this.magic = magic;
     }
 
 }
