@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team3;
 
 /**
@@ -11,19 +6,31 @@ package team3;
  */
 public class Character {
 
-// Health and Game Level
+/**
+ * Character's health
+ */
     private int health = 100;
 
-//Character name and titleAttack
+/**
+ * Character's name
+ */
     private String name;
+/**
+ * Useful information for the user
+ */
     private String lastAttackTitle = "The starting battle specs are:";
 
-//Character Abilities
+/**
+ * Character's power level
+ */
     private int power = 100;
+/**
+ * Character's magic level
+ */    
     private int magic = 100;
     
     /**
-     *
+     * Method that completes the attack sequence based on current character stats
      * @param power1ormagic2
      * @param enemy
      */
@@ -77,7 +84,7 @@ public class Character {
     }
 
     /**
-     *
+     * Simple method to assign the character's name
      * @param name
      */
     public Character(String name) {
@@ -86,7 +93,7 @@ public class Character {
     }
 
     /**
-     *
+     * Gets the character's health
      * @return
      */
     public int getHealth() {
@@ -94,7 +101,7 @@ public class Character {
     }
 
     /**
-     *
+     * Sets the character's health
      * @param health
      */
     public void setHealth(int health) {
@@ -102,7 +109,7 @@ public class Character {
     }
 
     /**
-     *
+     * Gets the character's name
      * @return
      */
     public String getName() {
@@ -110,7 +117,7 @@ public class Character {
     }
 
     /**
-     *
+     * Sets the character's name
      * @param name
      */
     public void setName(String name) {
@@ -118,7 +125,7 @@ public class Character {
     }
 
     /**
-     *
+     * Gets the last attack title
      * @return
      */
     public String getLastAttackTitle() {
