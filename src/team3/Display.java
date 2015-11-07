@@ -1,213 +1,157 @@
 package team3;
 
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import static team3.Game.waitSeconds;
+
 
 /**
- *
  * @author JOHN W SLIWA
  * @author JOSE E JIMENEZ
  */
-public class Game {
+public class Display {
 
     /**
-     * A new random number
+     * A custom console printer that accepts text and number of blank lines with a wait function built in.
+     * @param input scans in the users input
+     * @param lines the number of new lines to space out
+     * @param seconds how long to pause the console
+     * @return boolean 
      */
-    static public Random random = new Random();
+    static public Boolean text(String input, int lines, double seconds) {
 
-    /** 
-     * A new console input scanner
-     */
-    static public Scanner scanIn = new Scanner(System.in);
-
-    /**
-     * A console based game. Hero vs Monster
-     */
-    public Game() {
-    }
-    
-    /**
-     * Generates one of six randomly selected names.
-     * @return array a randomly selected name
-     */
-    public String randomName() {
-        String[] array = {"Janfeb", "Macapri", "Majune", "Julaug", "Sepoct", "Nodec"};
-        return array[random.nextInt(6)];
-    }
-
-    /**
-     * Prompts user to input their hero's name.
-     * @return toReturn Hero's name
-     */
-    public String getPlayerName() {
-
-        String toReturn = "";
-        System.out.print("Please name your character:\n");
-        System.out.print("Enter text here: ");
-//        toReturn = scanIn.next();
-//        scanIn.nextLine();
-      
-             try {
-                toReturn = scanIn.next();
-                scanIn.nextLine();
-            } catch (InputMismatchException ime) {
-                
-                scanIn.nextLine();
-            }
-             
-            return toReturn;
-        
-
-    }
-
-    /**
-     * Constructor for the monster. Generates random stats and name
-     * @return monster with random stats and name
-     */
-    public Character createMonster() {
-        int power = random.nextInt(200);
-        Character monster = new Character(randomName());
-        monster.setPower(power);
-        monster.setMagic(200 - power);
-
-        return monster;
-    }
-
-    /**
-     * Method for adding a small delay that allows the user time to read information.
-     * @param seconds how many seconds to wait
-     * @return true a boolean value indicating the wait was successful.
-     */
-    public static Boolean waitSeconds(double seconds) {
-
-        int miliSeconds = (int) (seconds * 1000);
-
-        try {
-            Thread.sleep(miliSeconds);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
+        System.out.print(input);
+        blankLines(lines);
+        waitSeconds(seconds);
         return true;
     }
 
     /**
-     * generates a 1 or a 2 for randomly selecting the attack mode for the monster.
-     * @return random  1 for power attack, 2 for magic attack
-     */
-    public static int randomAttack() {
-        return random.nextInt(2) + 1;
-    }
-
-    /**
-     * Decision making method, accepts a 1 or a 2. 1 is for power attack, 2 is for magic attack
-     * @param hero the game's hero
-     * @param attack the user or randomly generated attack decision.
-     * @param badDude the games very ugly bad dude a.k.a. the monster.
-     * @return true boolean value showing the code was completed successfully. 
-     */
-    public Boolean chooseAttackMode(Character hero, int attack, Character badDude) {
-        int powerAttack = 1;
-        int magicAttack = 2;
-
-        if (attack == 1) {
-            hero.attack(powerAttack, badDude);
-            badDude.attack(randomAttack(), hero);
-        } else {
-            hero.attack(magicAttack, badDude);
-            badDude.attack(randomAttack(), hero);
-        }
-        return true;
-    }
-
-    /**
-     * Method for checking whether or not a character has died.
-     * @param badDude
-     * @param hero
-     * @return boolean true only if both characters are still alive.
-     */
-    public boolean alive(Character badDude, Character hero) {
-        if (badDude.getHealth() > 0 && hero.getHealth() > 0) {
-            return true;
-        } else {
-            checkWin(badDude, hero);
-            return false;
-        }
-    }
-
-    /**
-     * Checks to see if the game is over. Displays winner.
-     * @param badDude
-     * @param hero
+     * Start of game announcement. Looks pretty and provides game information.
+     * @param hero the heros name
+     * @param VS static string
+     * @param badDude the monster character's name
+     * @param lines number of lines to use for space
+     * @param seconds length of time to pause the console
      * @return 
      */
-    public Boolean checkWin(Character badDude, Character hero) {
+    static public Boolean announcement(String hero, String VS, String badDude, int lines, double seconds) {
 
-        String whoWins = " ";
+        String star = "*";
+        String content = hero + VS + badDude + "\n";
+        String line = new String(new char[content.length() - 1]).replace("\0", star);
 
-        if (badDude.getHealth() <= 0 && hero.getHealth() > 0) {
-            whoWins = hero.getName() + " Wins!";
-            badDude.setHealth(0);
-
-        } else if (hero.getHealth() <= 0 && badDude.getHealth() > 0) {
-            whoWins = badDude.getName() + " Wins!";
-            hero.setHealth(0);
-          
-        } else if (hero.getHealth() <= 0 && badDude.getHealth() <= 0) {
-            whoWins = badDude.getName() + " and " + hero.getName() + " are both Dead!";
-            hero.setHealth(0);
-            badDude.setHealth(0);
-
-        }
-        Display.blankLines(1);
-        Display.characterSpecs(hero, 0, 0);
-        Display.characterSpecs(badDude, 0, 0);
-        Display.announcement("| ", whoWins, " |", 1, 5);
         
+        text("        " + line + "\n"
+                + "        " + content
+                + "        " + line, lines, seconds);
+
         return true;
     }
 
     /**
-     * The actual game logic. Build characters, calls display and inputs decisions into game logic.
-     * @param args the command line arguments
+     * Nifty looking title for the start of the game. Wow, so artsy.
+     * @return  boolean
      */
-    public static void main(String[] args) {
+    static public Boolean showTitle() {
 
-        Game game = new Game();
+        String title
+                = "        ******************************\n"
+                + "        ***    |  WAR GAMES  |     ***\n"
+                + "        ******************************";
 
-        Display.showTitle();
-        Display.startOfGame();
+        text(title, 1, 1.5);
+        return true;
+    }
 
-//Get Player Info
-        String name = game.getPlayerName();
-        Display.blankLines(1);
+    /**
+     * Game instructions for the user.
+     * @return 
+     */
+    static public Boolean instructions() {
 
-// Create Characters
-        Character hero = new Character(name);
-        Character badDude = game.createMonster();
+        String show
+                = "The objective of the game is to kill the monster\n"
+                + "You play by attacking the monster with one of two modes:\n"
+                + "If your power/magic is more than the monster,\n"
+                + "You will cause more damage \n";
 
-// Display the Character's starting specs
-        Display.instructions();
-        scanIn.nextLine();
-        Display.text("Let the games begin.", 2, 1);
-        Display.announcement(hero.getName(), " VS ", badDude.getName(), 2, 2);
+        text(show, 0, 0);
+        System.out.print("\n({Enter] to continue...");
+        return true;
+    }
 
-        int attackMode = -1;
-        do {
-            Display.blankLines(1);
-            Display.characterSpecs(hero, 0, 0);
-            Display.characterSpecs(badDude, 1, 0);
-            Display.chooseFightMode();
+    /**
+     * Console art for the game, Depicts a valiant warrior and a bad dude.
+     * @return 
+     */
+    static public Boolean startOfGame() {
 
-            try {
-                attackMode = scanIn.nextInt();
-                game.chooseAttackMode(hero, attackMode, badDude);
-            } catch (InputMismatchException ime) {
-                attackMode = -1;
-                scanIn.nextLine();
-            }
+        String graphic
+                = "                    /                              \n"
+                + "     **            /             !!!!!             \n"
+                + "     **           /             #!@!@!#            \n"
+                + "  ***   **      //              ######             \n"
+                + " **  * * **     //    ++++++++++  ||   +++++       \n"
+                + " *         *  (/      +//+++   +++++++++  +++++    \n"
+                + "*** * *  * *** )    ///       ++++&&&+++++    +++  \n"
+                + "    *  *           ////      +++&&&&&& +++      ++ \n"
+                + "   *    *          //        ++++&&&&&++++       **\n"
+                + "   *    *         //         +++++++++++++         \n"
+                + "   *     *       //           ++++++++++++         \n"
+                + "  *       *      /              +++++++            \n"
+                + "  *        *                    ##  $$             \n"
+                + "  *         *                   ##   $$            \n"
+                + "  **        **                ###    $$$           \n";
 
-        } while (game.alive(badDude, hero));
+        text(graphic, 1, 1);
+        return true;
+    }
+
+    /**
+     * Formatted display for communicating the current character's statistics and life points.
+     * @param input the heros name
+     * @param lines how many blank lines to display
+     * @param seconds how long to pause the console
+     * @return 
+     */
+    static public Boolean characterSpecs(Character input, int lines, double seconds) {
+
+        String box = String.format("********************************\n"
+                + "**       Name  : %s                  \n"
+                + "**       Health: %d                  \n"
+                + "**       Power : %d                  \n"
+                + "**       Magic : %d                  \n"
+                + "********************************\n", input.getName(), input.getHealth(), input.getPower(), input.getMagic());
+
+        text("********************************", 1, 0);
+        text(input.getLastAttackTitle(), 1, 0);
+        text(box, 1, 0);
+        blankLines(lines);
+        waitSeconds(seconds);
+        return true;
+    }
+
+    /**
+     * Decision making method. Prompts user to make a decision about what type of attack to use.
+     * @return  boolean
+     */
+    static public Boolean chooseFightMode() {
+        System.out.println();
+        System.out.print("Choose 1 for Power Attack or 2 for Magic Attack\n");
+        System.out.print("Enter number here: ");
+        return true;
+    }
+
+    /**
+     * a shortcut method for inserting `number` of blank lines.
+     * @param number how many blank lines to write to the console
+     * @return boolean
+     */
+    static public Boolean blankLines(int number) {
+
+        for (int i = 0; i < number; i++) {
+            System.out.println();
+        }
+        return true;
     }
 
 }
