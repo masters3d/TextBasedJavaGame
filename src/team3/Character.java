@@ -1,36 +1,40 @@
 package team3;
 
 /**
+ * This instantiable class represents a single character
+ *
  * @author JOHN W SLIWA
  * @author JOSE E JIMENEZ
  */
 public class Character {
 
-/**
- * Character's health
- */
+    /**
+     * Character's health
+     */
     private int health = 100;
 
-/**
- * Character's name
- */
+    /**
+     * Character's name
+     */
     private String name;
-/**
- * Useful information for the user
- */
+    /**
+     * Useful information for the user
+     */
     private String lastAttackTitle = "The starting battle specs are:";
 
-/**
- * Character's power level
- */
-    private int power = 100;
-/**
- * Character's magic level
- */    
-    private int magic = 100;
-    
     /**
-     * Method that completes the attack sequence based on current character stats
+     * Character's power level
+     */
+    private int power = 100;
+    /**
+     * Character's magic level
+     */
+    private int magic = 100;
+
+    /**
+     * Method that completes the attack sequence based on current character
+     * stats
+     *
      * @param power1ormagic2
      * @param enemy
      */
@@ -85,6 +89,7 @@ public class Character {
 
     /**
      * Simple method to assign the character's name
+     *
      * @param name
      */
     public Character(String name) {
@@ -94,6 +99,7 @@ public class Character {
 
     /**
      * Gets the character's health
+     *
      * @return
      */
     public int getHealth() {
@@ -102,6 +108,7 @@ public class Character {
 
     /**
      * Sets the character's health
+     *
      * @param health
      */
     public void setHealth(int health) {
@@ -110,6 +117,7 @@ public class Character {
 
     /**
      * Gets the character's name
+     *
      * @return
      */
     public String getName() {
@@ -118,6 +126,7 @@ public class Character {
 
     /**
      * Sets the character's name
+     *
      * @param name
      */
     public void setName(String name) {
@@ -126,6 +135,7 @@ public class Character {
 
     /**
      * Gets the last attack title
+     *
      * @return
      */
     public String getLastAttackTitle() {

@@ -2,19 +2,22 @@ package team3;
 
 import static team3.Game.waitSeconds;
 
-
 /**
+ * A helper class with static methods to display text during game.
+ *
  * @author JOHN W SLIWA
  * @author JOSE E JIMENEZ
  */
 public class Display {
 
     /**
-     * A custom console printer that accepts text and number of blank lines with a wait function built in.
+     * A custom console printer that accepts text and number of blank lines with
+     * a wait function built in.
+     *
      * @param input scans in the users input
      * @param lines the number of new lines to space out
      * @param seconds how long to pause the console
-     * @return boolean 
+     * @return boolean
      */
     static public Boolean text(String input, int lines, double seconds) {
 
@@ -26,12 +29,13 @@ public class Display {
 
     /**
      * Start of game announcement. Looks pretty and provides game information.
+     *
      * @param hero the heros name
      * @param VS static string
      * @param badDude the monster character's name
      * @param lines number of lines to use for space
      * @param seconds length of time to pause the console
-     * @return 
+     * @return boolean
      */
     static public Boolean announcement(String hero, String VS, String badDude, int lines, double seconds) {
 
@@ -39,7 +43,6 @@ public class Display {
         String content = hero + VS + badDude + "\n";
         String line = new String(new char[content.length() - 1]).replace("\0", star);
 
-        
         text("        " + line + "\n"
                 + "        " + content
                 + "        " + line, lines, seconds);
@@ -49,7 +52,8 @@ public class Display {
 
     /**
      * Nifty looking title for the start of the game. Wow, so artsy.
-     * @return  boolean
+     *
+     * @return boolean
      */
     static public Boolean showTitle() {
 
@@ -64,7 +68,8 @@ public class Display {
 
     /**
      * Game instructions for the user.
-     * @return 
+     *
+     * @return
      */
     static public Boolean instructions() {
 
@@ -81,7 +86,8 @@ public class Display {
 
     /**
      * Console art for the game, Depicts a valiant warrior and a bad dude.
-     * @return 
+     *
+     * @return
      */
     static public Boolean startOfGame() {
 
@@ -107,11 +113,13 @@ public class Display {
     }
 
     /**
-     * Formatted display for communicating the current character's statistics and life points.
+     * Formatted display for communicating the current character's statistics
+     * and life points.
+     *
      * @param input the heros name
      * @param lines how many blank lines to display
      * @param seconds how long to pause the console
-     * @return 
+     * @return
      */
     static public Boolean characterSpecs(Character input, int lines, double seconds) {
 
@@ -131,8 +139,10 @@ public class Display {
     }
 
     /**
-     * Decision making method. Prompts user to make a decision about what type of attack to use.
-     * @return  boolean
+     * Decision making method. Prompts user to make a decision about what type
+     * of attack to use.
+     *
+     * @return boolean
      */
     static public Boolean chooseFightMode() {
         System.out.println();
@@ -143,6 +153,7 @@ public class Display {
 
     /**
      * a shortcut method for inserting `number` of blank lines.
+     *
      * @param number how many blank lines to write to the console
      * @return boolean
      */

@@ -4,7 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/cheyo/Documents/NetBeansProjects/team3/src/team3/Character.java</file>
+            <file>file:/Users/cheyo/Documents/NetBeansProjects/team3/test/team3/DisplayTest.java</file>
+            <file>file:/Users/cheyo/Documents/NetBeansProjects/team3/test/team3/CharacterTest.java</file>
+            <file>file:/Users/cheyo/Documents/NetBeansProjects/team3/test/team3/Team3Suite.java</file>
             <file>file:/Users/cheyo/Documents/NetBeansProjects/team3/src/team3/Game.java</file>
+            <file>file:/Users/cheyo/Documents/NetBeansProjects/team3/test/team3/GameTest.java</file>
             <file>file:/Users/cheyo/Documents/NetBeansProjects/team3/src/team3/Display.java</file>
         </group>
     </open-files>

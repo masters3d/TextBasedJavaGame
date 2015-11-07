@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
+ * This instantiable class represents a single game.
  *
  * @author JOHN W SLIWA
  * @author JOSE E JIMENEZ
@@ -16,7 +17,7 @@ public class Game {
      */
     static public Random random = new Random();
 
-    /** 
+    /**
      * A new console input scanner
      */
     static public Scanner scanIn = new Scanner(System.in);
@@ -26,9 +27,10 @@ public class Game {
      */
     public Game() {
     }
-    
+
     /**
      * Generates one of six randomly selected names.
+     *
      * @return array a randomly selected name
      */
     public String randomName() {
@@ -38,6 +40,7 @@ public class Game {
 
     /**
      * Prompts user to input their hero's name.
+     *
      * @return toReturn Hero's name
      */
     public String getPlayerName() {
@@ -45,24 +48,22 @@ public class Game {
         String toReturn = "";
         System.out.print("Please name your character:\n");
         System.out.print("Enter text here: ");
-//        toReturn = scanIn.next();
-//        scanIn.nextLine();
-      
-             try {
-                toReturn = scanIn.next();
-                scanIn.nextLine();
-            } catch (InputMismatchException ime) {
-                
-                scanIn.nextLine();
-            }
-             
-            return toReturn;
-        
+
+        try {
+            toReturn = scanIn.next();
+            scanIn.nextLine();
+        } catch (InputMismatchException ime) {
+
+            scanIn.nextLine();
+        }
+
+        return toReturn;
 
     }
 
     /**
      * Constructor for the monster. Generates random stats and name
+     *
      * @return monster with random stats and name
      */
     public Character createMonster() {
@@ -75,7 +76,9 @@ public class Game {
     }
 
     /**
-     * Method for adding a small delay that allows the user time to read information.
+     * Method for adding a small delay that allows the user time to read
+     * information.
+     *
      * @param seconds how many seconds to wait
      * @return true a boolean value indicating the wait was successful.
      */
@@ -92,19 +95,23 @@ public class Game {
     }
 
     /**
-     * generates a 1 or a 2 for randomly selecting the attack mode for the monster.
-     * @return random  1 for power attack, 2 for magic attack
+     * generates a 1 or a 2 for randomly selecting the attack mode for the
+     * monster.
+     *
+     * @return random 1 for power attack, 2 for magic attack
      */
     public static int randomAttack() {
         return random.nextInt(2) + 1;
     }
 
     /**
-     * Decision making method, accepts a 1 or a 2. 1 is for power attack, 2 is for magic attack
+     * Decision making method, accepts a 1 or a 2. 1 is for power attack, 2 is
+     * for magic attack
+     *
      * @param hero the game's hero
      * @param attack the user or randomly generated attack decision.
      * @param badDude the games very ugly bad dude a.k.a. the monster.
-     * @return true boolean value showing the code was completed successfully. 
+     * @return true boolean value showing the code was completed successfully.
      */
     public Boolean chooseAttackMode(Character hero, int attack, Character badDude) {
         int powerAttack = 1;
@@ -122,6 +129,7 @@ public class Game {
 
     /**
      * Method for checking whether or not a character has died.
+     *
      * @param badDude
      * @param hero
      * @return boolean true only if both characters are still alive.
@@ -137,9 +145,10 @@ public class Game {
 
     /**
      * Checks to see if the game is over. Displays winner.
+     *
      * @param badDude
      * @param hero
-     * @return 
+     * @return
      */
     public Boolean checkWin(Character badDude, Character hero) {
 
@@ -152,7 +161,7 @@ public class Game {
         } else if (hero.getHealth() <= 0 && badDude.getHealth() > 0) {
             whoWins = badDude.getName() + " Wins!";
             hero.setHealth(0);
-          
+
         } else if (hero.getHealth() <= 0 && badDude.getHealth() <= 0) {
             whoWins = badDude.getName() + " and " + hero.getName() + " are both Dead!";
             hero.setHealth(0);
@@ -163,12 +172,14 @@ public class Game {
         Display.characterSpecs(hero, 0, 0);
         Display.characterSpecs(badDude, 0, 0);
         Display.announcement("| ", whoWins, " |", 1, 5);
-        
+
         return true;
     }
 
     /**
-     * The actual game logic. Build characters, calls display and inputs decisions into game logic.
+     * The actual game logic. Build characters, calls display and inputs
+     * decisions into game logic.
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
