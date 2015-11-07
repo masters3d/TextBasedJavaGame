@@ -12,24 +12,24 @@ import java.util.Scanner;
 public class Game {
 
     /**
-     *
+     * A new random number
      */
     static public Random random = new Random();
 
-    /**
-     *
+    /** 
+     * A new console input scanner
      */
     static public Scanner scanIn = new Scanner(System.in);
 
     /**
-     *
+     * A console based game. Hero vs Monster
      */
     public Game() {
     }
     
     /**
-     *
-     * @return
+     * Generates one of six randomly selected names.
+     * @return array a randomly selected name
      */
     public String randomName() {
         String[] array = {"Janfeb", "Macapri", "Majune", "Julaug", "Sepoct", "Nodec"};
@@ -37,8 +37,8 @@ public class Game {
     }
 
     /**
-     *
-     * @return
+     * Prompts user to input their hero's name.
+     * @return toReturn Hero's name
      */
     public String getPlayerName() {
 
@@ -62,8 +62,8 @@ public class Game {
     }
 
     /**
-     *
-     * @return
+     * Constructor for the monster. Generates random stats and name
+     * @return monster with random stats and name
      */
     public Character createMonster() {
         int power = random.nextInt(200);
@@ -75,8 +75,9 @@ public class Game {
     }
 
     /**
-     *
-     * @param seconds
+     * Method for adding a small delay that allows the user time to read information.
+     * @param seconds how many seconds to wait
+     * @return true a boolean value indicating the wait was successful.
      */
     public static Boolean waitSeconds(double seconds) {
 
@@ -91,18 +92,19 @@ public class Game {
     }
 
     /**
-     *
-     * @return
+     * generates a 1 or a 2 for randomly selecting the attack mode for the monster.
+     * @return random  1 for power attack, 2 for magic attack
      */
     public static int randomAttack() {
         return random.nextInt(2) + 1;
     }
 
     /**
-     *
-     * @param hero
-     * @param attack
-     * @param badDude
+     * Decision making method, accepts a 1 or a 2. 1 is for power attack, 2 is for magic attack
+     * @param hero the game's hero
+     * @param attack the user or randomly generated attack decision.
+     * @param badDude the games very ugly bad dude a.k.a. the monster.
+     * @return true boolean value showing the code was completed successfully. 
      */
     public Boolean chooseAttackMode(Character hero, int attack, Character badDude) {
         int powerAttack = 1;
@@ -119,10 +121,10 @@ public class Game {
     }
 
     /**
-     *
+     * Method for checking whether or not a character has died.
      * @param badDude
      * @param hero
-     * @return
+     * @return boolean true only if both characters are still alive.
      */
     public boolean alive(Character badDude, Character hero) {
         if (badDude.getHealth() > 0 && hero.getHealth() > 0) {
@@ -134,9 +136,10 @@ public class Game {
     }
 
     /**
-     *
+     * Checks to see if the game is over. Displays winner.
      * @param badDude
      * @param hero
+     * @return 
      */
     public Boolean checkWin(Character badDude, Character hero) {
 
@@ -165,6 +168,7 @@ public class Game {
     }
 
     /**
+     * The actual game logic. Build characters, calls display and inputs decisions into game logic.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
