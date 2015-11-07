@@ -19,12 +19,12 @@ public class Display {
      * @param lines
      * @param seconds
      */
-    static public void text(String input, int lines, double seconds) {
+    static public Boolean text(String input, int lines, double seconds) {
 
         System.out.print(input);
         blankLines(lines);
         waitSeconds(seconds);
-
+        return true;
     }
 
     /**
@@ -35,7 +35,7 @@ public class Display {
      * @param lines
      * @param seconds
      */
-    static public void announcement(String hero, String VS, String badDude, int lines, double seconds) {
+    static public Boolean announcement(String hero, String VS, String badDude, int lines, double seconds) {
 
         String star = "*";
         String content = hero + VS + badDude + "\n";
@@ -46,12 +46,13 @@ public class Display {
                 + "        " + content
                 + "        " + line, lines, seconds);
 
+        return true;
     }
 
     /**
      *
      */
-    static public void showTitle() {
+    static public Boolean showTitle() {
 
         String title
                 = "        ******************************\n"
@@ -59,13 +60,13 @@ public class Display {
                 + "        ******************************";
 
         text(title, 1, 1.5);
-
+        return true;
     }
 
     /**
      *
      */
-    static public void instructions() {
+    static public Boolean instructions() {
 
         String show
                 = "The objective of the game is to kill the monster\n"
@@ -75,13 +76,13 @@ public class Display {
 
         text(show, 0, 0);
         System.out.print("\n({Enter] to continue...");
-
+        return true;
     }
 
     /**
      *
      */
-    static public void startOfGame() {
+    static public Boolean startOfGame() {
 
         String graphic
                 = "                    /                              \n"
@@ -101,6 +102,7 @@ public class Display {
                 + "  **        **                ###    $$$           \n";
 
         text(graphic, 1, 1);
+        return true;
     }
 
     /**
@@ -109,7 +111,7 @@ public class Display {
      * @param lines
      * @param seconds
      */
-    static public void characterSpecs(Character input, int lines, double seconds) {
+    static public Boolean characterSpecs(Character input, int lines, double seconds) {
 
         String box = String.format("********************************\n"
                 + "**       Name  : %s                  \n"
@@ -123,28 +125,29 @@ public class Display {
         text(box, 1, 0);
         blankLines(lines);
         waitSeconds(seconds);
-
+        return true;
     }
 
     /**
      *
      */
-    static public void chooseFightMode() {
+    static public Boolean chooseFightMode() {
         System.out.println();
         System.out.print("Choose 1 for Power Attack or 2 for Magic Attack\n");
         System.out.print("Enter number here: ");
+        return true;
     }
 
     /**
      *
      * @param number
      */
-    static public void blankLines(int number) {
+    static public Boolean blankLines(int number) {
 
         for (int i = 0; i < number; i++) {
             System.out.println();
         }
-
+        return true;
     }
 
 }

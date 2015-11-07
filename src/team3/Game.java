@@ -68,7 +68,7 @@ public class Game {
      *
      * @param seconds
      */
-    public static void waitSeconds(double seconds) {
+    public static Boolean waitSeconds(double seconds) {
 
         int miliSeconds = (int) (seconds * 1000);
 
@@ -77,7 +77,7 @@ public class Game {
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
-
+        return true;
     }
 
     /**
@@ -94,7 +94,7 @@ public class Game {
      * @param attack
      * @param badDude
      */
-    public void chooseAttackMode(Character hero, int attack, Character badDude) {
+    public Boolean chooseAttackMode(Character hero, int attack, Character badDude) {
         int powerAttack = 1;
         int magicAttack = 2;
 
@@ -105,7 +105,7 @@ public class Game {
             hero.attack(magicAttack, badDude);
             badDude.attack(randomAttack(), hero);
         }
-
+        return true;
     }
 
     /**
@@ -128,7 +128,7 @@ public class Game {
      * @param badDude
      * @param hero
      */
-    public void checkWin(Character badDude, Character hero) {
+    public Boolean checkWin(Character badDude, Character hero) {
 
         String whoWins = " ";
 
@@ -151,6 +151,7 @@ public class Game {
         Display.characterSpecs(badDude, 0, 0);
         Display.announcement("| ", whoWins, " |", 1, 5);
         
+        return true;
     }
 
     /**

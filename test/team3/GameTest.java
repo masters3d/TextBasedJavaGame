@@ -7,12 +7,34 @@ package team3;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.TestName;
 
 /**
  * @author JOHN W SLIWA
  * @author JOSE E JIMENEZ
  */
 public class GameTest {
+    
+        @Rule public TestName testName = new TestName();
+
+         /**
+     * Character object used for testing.
+     */
+    Character hero;
+    Character enemy;
+    Game game;
+
+    /**
+     * Instantiates the Character object.
+     */
+    @Before
+    public void setUp() {
+        hero = new Character("hero");
+        enemy = new Character("enemy");
+        game = new Game();
+    }
     
     public GameTest() {
     }
@@ -22,6 +44,7 @@ public class GameTest {
      */
     @Test
     public void testRandomName() {
+        
     }
 
     /**
