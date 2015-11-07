@@ -42,12 +42,22 @@ public class Game {
      */
     public String getPlayerName() {
 
-        String toReturn = " ";
+        String toReturn = "";
         System.out.print("Please name your character:\n");
         System.out.print("Enter text here: ");
-        toReturn = scanIn.next();
-        scanIn.nextLine();
-        return toReturn;
+//        toReturn = scanIn.next();
+//        scanIn.nextLine();
+      
+             try {
+                toReturn = scanIn.next();
+                scanIn.nextLine();
+            } catch (InputMismatchException ime) {
+                
+                scanIn.nextLine();
+            }
+             
+            return toReturn;
+        
 
     }
 
